@@ -1,0 +1,77 @@
+Top AWS S3 CLI Commands:
+
+1. Create a New S3 Bucket
+Make use of the mb option. Make Bucket is abbreviated as mb.
+aws s3 mb s3://projectbhavanibucket      
+-----------------------------------------------------------------------
+2. Delete an S3 Bucket
+Make use of the rb option. Remove bucket is referred to as rb.
+aws s3 rb s3://projectbhavanibucket  
+-----------------------------------------------------------------------
+3. List all Objects in a Bucket Recursively
+show all objects, along with the data of nested folders, in recursive mode:
+aws s3 ls s3://projectbhavanibucket --recursive  
+-----------------------------------------------------------------------
+4. List All S3 Buckets
+every bucket that the administrator owns:
+$ aws s3 ls  
+-----------------------------------------------------------------------
+5. Total Size of All Objects in an S3 Bucket
+By combining the three settings below, you may get the 
+combined size of all the files in your S3 bucket: summarize, recursive, and human-readable 
+     
+aws s3 ls s3://projectbhavanibucket --recursive --human-readable --summarize
+-----------------------------------------------------------------------
+6. Copy Local File to S3 Bucket
+ aws s3 cp s3://manisaibucket/Student.txt  s3://projectbhavanibucket  
+
+
+..................................................................................................
+...................................................................................................  
+
+Top AWS SES CLI Commands: 
+
+1.Create a topic
+ aws sns create-topic --name my-topic
+-----------------------------------------------------------------------
+2.Subscribe to a topic
+specifies the email protocol and an email address for the notification-endpoint
+aws sns subscribe --topic-arn arn:aws:sns:us-east-1:291628181254:my-topic --protocol email --notification-endpoint bchennoju958@gmail.com
+-----------------------------------------------------------------------
+3.Publish to a topic
+sends the message "Hello World!" to all subscribers of the specified topic.
+aws sns publish  --topic-arn arn:aws:sns:us-east-1:291628181254:my-topic --message "hello all"
+-----------------------------------------------------------------------
+4.Unsubscribe from a topic
+specify the ARN of the topic you want to unsubscribe from.
+aws sns unsubscribe --subscription-arn arn:aws:sns:us-east-1:291628181254:my-topic:f5a64f12-fb95-4745-b4be-e5be0ea8a310
+-----------------------------------------------------------------------
+5.Delete a topic
+aws sns delete-topic --topic-arn arn:aws:sns:us-east-1:291628181254:my-topic
+---------------------------------------------------------------------
+6.List of subscriptions
+$ aws sns list-subscriptions
+---------------------------------------------------------------------
+7.List of Topics
+$ aws sns list-topics
+..................................................................................................
+................................................................................................... 
+
+
+Top AWS DynamoDB Commands: 
+1.List Tables
+To get a list of all DynamoDB Tables available on your account in the current region, use following command:
+aws dynamodb list-tables
+---------------------------------------------------------------------
+2.Describe Table
+To get information about the table, use Describe Table operation. It will return data about table key schema, capacity mode, provisioned WCU and RCU, count of the items, status, amount of bytes, and much more.
+
+aws dynamodb describe-table --table-name employee
+
+3.Delete Table
+To delete DynamoDB Table using AWS CLI, you need to use the aws dynamodb delete-table command with the required --table-name argument:
+
+aws dynamodb delete-table --table-name employee
+
+4.
+aws dynamodb get-item --table-name employee--key '{"employeeId": {"N": "c1319ac3-7e5e-4f2b-8dbd-ae278ed3bbb1"}}' --consistent-read
